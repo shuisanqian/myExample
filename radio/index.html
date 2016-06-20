@@ -83,12 +83,12 @@
 				addEvent:function(){
 					var that = this;
 					for(var i=0;i<that.count;i++){
-						if($.browser.msie){
+						if(that.liCheck[i].addEventListener){
+							that.liCheck[i].addEventListener('click',that.bindEvents);
+						}else{
 							//IE8 下 通过attachevent绑定事件this的指向已不是事件本身,而是window。
 							that.liCheck[i].attachEvent('onclick',that.bindEvents);
-						}else{
-							that.liCheck[i].addEventListener('click',that.bindEvents);
-						}
+						}					
 					}
 				},
 				bindEvents:function(event){
@@ -100,7 +100,8 @@
 					}
 					if(cele.className){
 						return; 							//重复单击某个li
-					}else{
+					}else{		
+						//偷懒用了JQ
 						$(cele).toggleClass('default_checked'); //覆盖原有的li样式
 						$(cele).children('label').removeClass().addClass('labels checked');//添加选中样式
 						$(cele).siblings('li').removeClass();//删除上一个li样式
@@ -111,7 +112,6 @@
 			}
 			window.onload = function(){
 				new radioCheck('check_1');
-				new radioCheck('check_2');
 			}
         </script>
 	</head>
