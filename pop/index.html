@@ -1,1 +1,158 @@
-asd
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>弹出小插件</title>
+		<style type="text/css">
+			.pop-overlay {
+				background-color: rgba(0, 0, 0, 0.4);
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				z-index: 1000;
+				display: none;
+			}
+			.pop-alert{
+				background-color: white;
+				font-family: 'Microsoft Yahei';
+				width: 478px;
+				padding: 17px;
+				border-radius: 5px;
+				text-align: center;
+				position: fixed;
+				left: 50%;
+				top: 50%;
+				margin-left: -256px;
+				margin-top: -200px;
+				overflow: hidden;
+				z-index: 2000;
+				display: none;
+			}
+			.alert-show{
+				display: block;
+				animation: altShow 0.5s ease-in-out;
+				-webkit-animation: altShow 0.5s ease-in-out ;
+				-moz-animation: altShow 0.5s ease-in-out ;
+				-ms-animation: altShow 0.5s ease-in-out ;
+			}
+			
+			@keyframes altShow{0%{transform: scale(.2,.2);}100%{transform:scale(1,1);}}
+			@-webkit-keyframes altShow{0%{transform: scale(.2,.2);}100%{transform:scale(1,1);}}
+			@-moz-keyframes altShow{0%{transform: scale(.2,.2);}100%{transform:scale(1,1);}}
+			@-ms-keyframes altShow{0%{transform: scale(.2,.2);}100%{transform:scale(1,1);}}
+		
+		</style>
+	</head>
+
+	<body>
+		<a id="pop">Click</a>
+		
+	</body>
+
+
+
+
+
+
+	<script>
+	
+	function a(b){
+		alert(b);
+		function b(){
+		
+		}
+	}
+	a(1);
+	
+	window.onload = function(){
+		document.getElementById('pop').onclick = function(){
+			window.popAlert('提示','这是一个默认的提示框');
+		}
+	}
+	
+	
+	
+	
+	
+	;(function(window, document) {
+			var overlayClass = '.pop-overlay';
+			var alertClass = '.pop-alert';
+			var getAlert  = function(){
+				return document.querySelector(alertClass);			
+			},
+			getOverlay = function(){
+				return document.querySelector(overlayClass)
+			},
+		    hasClass = function(elem, className) {
+		      return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+		    },
+		    addClass = function(elem, className) {
+		      if (!hasClass(elem, className)) {
+		        elem.className += ' ' + className;
+		      }
+		    },
+		    removeClass = function(elem, className) {
+		      var newClass = ' ' + elem.className.replace(/[\t\r\n]/g, ' ') + ' ';
+		      if (hasClass(elem, className)) {
+		        while (newClass.indexOf(' ' + className + ' ') >= 0) {
+		          newClass = newClass.replace(' ' + className + ' ', ' ');
+		        }
+		        elem.className = newClass.replace(/^\s+|\s+$/g, '');
+		      }
+		    }
+			
+			
+			
+			function initAlert() {
+				var alertHtml = '<div class="pop-overlay"></div><div class="pop-alert"></div>';
+				alertDom = document.createElement('div'); 
+				 
+				alertDom.innerHTML = alertHtml;
+				document.body.appendChild(alertDom);
+			}
+			window.popAlert = function() {
+				var params = {
+					title: '',
+					text: '',
+					type:''
+				}
+				if (arguments[0] === undefined) {
+					window.console.error('最少接受一个参数!');
+					return false;
+				}
+				params.title = arguments[0];
+				params.text = arguments[1] || '';
+				params.type = arguments[2] || '';
+				setAlertParams(params);
+			}
+
+
+
+
+
+
+
+			function setAlertParams(params) {
+				getOverlay().style.display = 'block';
+				addClass(getAlert(),'alert-show');
+				
+			}
+			
+			
+			
+			
+			(function() {
+				initAlert();
+			})();
+			
+			
+			
+			
+			
+		})(window, document)
+	</script>
+
+</html>
