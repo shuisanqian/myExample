@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片飞入购物车功能</title>
+		<link href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.css" rel="stylesheet">
+		<script src="http://cdn.bootcss.com/jquery/2.0.0/jquery.js"></script>
+		<style>
+			.div1{
+				width: 1200px;
+				margin: 40px auto;
+				overflow: hidden;
+			}
+			.div1>div{
+				width: 180px;
+				margin: 0px 20px 10px 0px;
+				height: 220px;
+				text-align: center;
+				font-size: 12px;
+				float: left;
+				border: 1px solid #CCCCCC;
+				border-radius: 5px;
+			}
+			.div1>div>img{
+				height: 140px;
+			    width: 140px;
+			    display: inline-block;
+			    margin-top: 20px;
+			    margin-bottom: 15px;
+			    border-radius: 5px;
+			}
+			.btnAdd{
+				font-size: 12px;
+			}
+			.cart{
+				width: 90px;
+			    position: absolute;
+			    left: 250px;
+			    top: 10px;
+			}
+			.min-img{
+				height: 150px;
+			    width: 150px;
+				position: absolute;
+				opacity: 0.5;
+				z-index: 1000;
+				background-attachment: ;
+			}
+			
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				$(".btnAdd").click(function(){
+					var This = $(this);
+					var offTop = This.siblings('img').offset().top;
+					var offLeft = This.siblings('img').offset().left;
+					//克隆一份图片，追加到body元素下，调用动画。
+					var cl = This.siblings('img').clone().offset({left:offLeft,top:offTop}).addClass('min-img').appendTo($('body')).animate({
+						'top':"40px",
+						'left': "295px",
+						'width': 0,
+						'height': 0
+					}, 1000,function(){
+						//回调，动画执行完成后销毁自己
+						$(this).detach();
+					});					
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<img class="cart" src="img/cart.png" />
+		<div class="div1">
+			<div>
+				<img src="img/2.png" />
+				<button class="btn btn-default btnAdd">加入购物车</button>
+			</div>
+			<div>
+				<img src="img/1.jpg" />
+				<button class="btn btn-default btnAdd">加入购物车</button>
+			</div>
+			
+			<div>
+				<img src="img/one_pice.jpg" />
+				<button class="btn btn-default btnAdd">加入购物车</button>
+			</div>
+			
+			<div>
+				<img src="img/one_pice1.jpg" />
+				<button class="btn btn-default btnAdd">加入购物车</button>
+			</div>
+			
+			<div>
+				<img src="img/one_pice1.jpg" />
+				<button class="btn btn-default btnAdd">加入购物车</button>
+			</div>
+			
+			<div>
+				<img src="img/one_pice1.jpg" />
+				<button class="btn btn-default btnAdd">加入购物车</button>
+			</div>
+		</div>		
+	</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			body,
+			div,
+			img {
+				margin: 0px;
+				padding: 0px;
+			}
+			.main {
+				width: 1200px;
+				height: 500px;
+				margin: 0px auto;
+				position: relative;
+				overflow: hidden;
+			}
+			.content{
+				width: 460px;
+				background: url(img/Mac.png) no-repeat;
+				background-size: cover;
+				height: 375px;
+				position: absolute;
+				bottom:62.5px;
+				left: 50%;
+				margin-left: -230px;
+				animation: macShow 2s ease-in-out;
+			}
+			@keyframes macShow{
+				0%{
+					bottom:-460px;
+				}
+			}
+			.btnClik{
+				width: 90px;
+			    height: 90px;
+			    background: url(img/one_pice.jpg) #FFFFFF no-repeat 0px 0px;
+    			background-size: 104%;
+			    border-radius: 45px;
+			    position: absolute;
+			    opacity: 0;
+			    top: 91px;
+			    left: 183px;
+			    z-index: 9;
+			    animation: btnCli 1s linear 2.25s;
+			    animation-fill-mode:forwards;
+			}
+			@keyframes btnCli{
+				0%{opacity: 0;transform: scale(0.5,0.5);}
+				50%{opacity: 1;transform: scale(1,1);}
+				100%{opacity: 1;transform: scale(0.8,0.8);}
+			}
+			.btnMask{
+				width: 80px;
+			    height: 80px;
+			    position: absolute;
+			    background-color: #FFFFFF;
+			    top: 96px;
+    			left: 188px;
+			    z-index: 8;
+			    border-radius: 45px;
+			    opacity: 0;
+			    animation: btnShowMask 1s linear 4.25s;
+			    animation-fill-mode:forwards;
+			    
+			}
+			@keyframes btnShowMask{
+				0%{
+					transform: scale(1,1);
+					opacity: 0;
+				}
+				50%{
+					opacity: 0.4;
+					transform: scale(1.4,1.4);
+				}
+				100%{
+					opacity: 0.4;
+					transform: scale(1.2,1.2);
+				}
+			}
+			.mouse{
+				width: 100px;
+			    position: absolute;
+			    z-index: 10;
+			    bottom: -220px;
+			    left: 180px;
+			    animation: mouseShow 4s ease-in-out 3s;
+			}
+			@keyframes mouseShow{
+				0%{
+					bottom: -125px;
+				}
+				30%{
+					bottom: 85px;
+				}
+				30%{
+					bottom: 85px;
+				}
+				50%{
+					bottom: 85px;
+				}
+				100%{
+					bottom: -220px;
+				}
+			}
+			.mouse>img{
+				width:120px
+			}
+			.radius{
+				position: absolute;
+				top: 155px;
+    			left: 553px;
+    			opacity: 0;
+    			
+			}
+			.radius>img{
+				width: 90px;
+				border-radius: 45px;
+			}
+			.ra1{
+				animation: showImg 1s ease-in-out 4.5s;
+				animation-fill-mode:forwards;
+			}
+			.ra2{
+				animation: showImg2 1s ease-in-out 4.75s;
+				animation-fill-mode:forwards;
+			}
+			.ra3{
+				animation: showImg3 1s ease-in-out 5s;
+				animation-fill-mode:forwards;
+			}
+			.ra4{
+				animation: showImg4 1s ease-in-out 5.25s;
+				animation-fill-mode:forwards;
+			}
+			.ra5{
+				animation: showImg5 1s ease-in-out 5.5s;
+				animation-fill-mode:forwards;
+			}
+			.ra6{
+				animation: showImg6 1s ease-in-out 5.5s;
+				animation-fill-mode:forwards;
+			}
+			.ra7{
+				animation: showImg7 1s ease-in-out 5.75s;
+				animation-fill-mode:forwards;
+			}
+			.ra8{
+				animation: showImg8 1s ease-in-out 6s;
+				animation-fill-mode:forwards;
+			}
+			.ra9{
+				animation: showImg9 1s ease-in-out 6.25s;
+				animation-fill-mode:forwards;
+			}
+			@keyframes showImg{100%{top:20px;left:120px;opacity: 1;}}
+			@keyframes showImg2{100%{top:140px;left:40px;opacity: 1;}}
+			@keyframes showImg3{100%{top:280px;left:80px;opacity: 1;}}
+			@keyframes showImg4{100%{top:400px;left:180px;opacity: 1;}}
+			@keyframes showImg5{100%{top:180px;left:200px;opacity: 1;}}
+			@keyframes showImg6{100%{top:60px;left:1000px;opacity: 1;}}
+			@keyframes showImg7{100%{top:160px;left:1050px;opacity: 1;}}
+			@keyframes showImg8{100%{top:200px;left:900px;opacity: 1;}}
+			@keyframes showImg9{100%{top:290px;left:1000px;opacity: 1;}}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="main">
+			<div class="content">
+				<div class="btnClik"></div>
+				<div class="btnMask"></div>
+				<div class="mouse">
+					<img src="img/3.png" />
+				</div>
+			</div>	
+			<div class="radius ra1">
+				<img src="img/one_pice1.jpg" />
+			</div>
+			<div class="radius ra2">
+				<img src="img/one_pice2.jpg" />
+			</div>
+			<div class="radius ra3">
+				<img src="img/one_pice3.jpg" />
+			</div>
+			<div class="radius ra4">
+				<img src="img/one_pice4.jpg" />
+			</div>
+			<div class="radius ra5">
+				<img src="img/one_pice5.jpg" />
+			</div>
+			<div class="radius ra6">
+				<img src="img/one_pice6.jpg" />
+			</div>
+			<div class="radius ra7">
+				<img src="img/one_pice7.jpg" />
+			</div>
+			<div class="radius ra8">
+				<img src="img/one_pice8.jpg" />
+			</div>
+			<div class="radius ra9">
+				<img src="img/one_pice9.jpg" />
+			</div>
+			
+		</div>
+
+	</body>
+
+</html>
