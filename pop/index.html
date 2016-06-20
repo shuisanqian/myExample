@@ -51,32 +51,15 @@
 		<a id="pop">Click</a>
 		
 	</body>
-
-
-
-
-
-
 	<script>
-	
-	function a(b){
-		alert(b);
-		function b(){
-		
-		}
-	}
-	a(1);
+
 	
 	window.onload = function(){
 		document.getElementById('pop').onclick = function(){
 			window.popAlert('提示','这是一个默认的提示框');
 		}
 	}
-	
-	
-	
-	
-	
+
 	;(function(window, document) {
 			var overlayClass = '.pop-overlay';
 			var alertClass = '.pop-alert';
@@ -130,11 +113,6 @@
 			}
 
 
-
-
-
-
-
 			function setAlertParams(params) {
 				getOverlay().style.display = 'block';
 				addClass(getAlert(),'alert-show');
@@ -147,10 +125,7 @@
 			(function() {
 				initAlert();
 			})();
-			
-			
-			
-			
+
 			
 		})(window, document)
 	</script>
