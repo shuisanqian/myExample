@@ -7,6 +7,12 @@
     <li><a target="_blank" href="http://htmlpreview.github.io/?https://github.com/shuisanqian/myExample/blob/master/radio/index.html">radio</a>-----美化单选按钮的一个小插件</li>
     <li>slide-----JS面向对象的Demo</li>
     <li>music-----乱写的一个音乐播放器(未完成)</li>
+    <li>
+        #动画
+        <ul>
+            <li><a>帧动画运用</a></li>
+        </ul>
+    </li>
 </ol>
 
 
