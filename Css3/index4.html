@@ -42,18 +42,9 @@
 				z-index: 2;
 				cursor: move;
 			}
-		</style>		
-	</head>
-	<body>
-		<div id="small" class="minImg">
-			<span id="mouse" class="mouse"></span>
-			<img src="img/min-img.png" />
-		</div>
-		<div id="bImg" class="maxImg">	
-			<img id="big" src="img/max-img.png" />
-		</div>
-	</body>
+		</style>
 	<script>
+	window.onload = function(){
 		var minDiv = document.getElementById('small'); //小图片的DIV
 		var mouse = document.getElementById('mouse'); //小图的层
 		var bigImg = document.getElementById('big'); //大图
@@ -101,10 +92,17 @@
 			bigImg.style.left =bigX * (maxDiv.offsetWidth -  bigImg.offsetWidth)+"px";
 			bigImg.style.top =bigY * (maxDiv.offsetHeight - bigImg.offsetHeight)+"px";		
 		}
-		
-		
-		
-		
-		
+	}	
 	</script>
+	</head>
+	<body>
+		<div id="small" class="minImg">
+			<span id="mouse" class="mouse"></span>
+			<img src="img/min-img.png" />
+		</div>
+		<div id="bImg" class="maxImg">	
+			<img id="big" src="img/max-img.png" />
+		</div>
+	</body>
+
 </html>
