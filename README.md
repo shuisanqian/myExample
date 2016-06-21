@@ -10,7 +10,7 @@
     <li>
         动画
         <ul>
-            <li><a href="http://htmlpreview.github.io/?https://github.com/shuisanqian/myExample/blob/master/Css3/index.html">帧动画运用</a></li>
+            <li><a target="_blank" href="http://htmlpreview.github.io/?https://github.com/shuisanqian/myExample/blob/master/Css3/index.html">帧动画运用</a></li>
             <li><a href="http://htmlpreview.github.io/?https://github.com/shuisanqian/myExample/blob/master/Css3/index2.html">一些网站常用的动画</a></li>
             <li><a href="http://htmlpreview.github.io/?https://github.com/shuisanqian/myExample/blob/master/Css3/index3.html">商品飞入购物车</a></li>
             <li><a href="http://htmlpreview.github.io/?https://github.com/shuisanqian/myExample/blob/master/Css3/index4.html">放大镜(JS)</a></li>
