@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>弹出小插件</title>
+		<style type="text/css">
+			.pop-overlay {
+				background-color: rgba(0, 0, 0, 0.4);
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				z-index: 1000;
+				display: none;
+			}
+			.pop-alert{
+				background-color: white;
+				font-family: 'Microsoft Yahei';
+				width: 300px;
+				padding: 17px;
+				border-radius: 5px;
+				text-align: center;
+				position: absolute;
+				left: 50%;
+				top: 30%;
+				margin-left: -150px;
+				z-index: 2000;
+				display: none;
+			}
+			.alert-show{
+				display: block;
+				animation: altShow 0.5s ease-in-out;
+				-webkit-animation: altShow 0.5s ease-in-out ;
+				-moz-animation: altShow 0.5s ease-in-out ;
+				-ms-animation: altShow 0.5s ease-in-out ;
+			}
+			.alert-hide{
+				display: none;
+				animation: altHide 0.5s ease-in-out;
+				-webkit-animation: altHide 0.5s ease-in-out ;
+				-moz-animation: altHide 0.5s ease-in-out ;
+				-ms-animation: altHide 0.5s ease-in-out ;
+			}
+			@keyframes altHide{0%{transform:scale(1,1);}100%{transform: scale(.2,.2);}}
+			@-webkit-keyframes altHide{0%{transform:scale(1,1);}100%{transform: scale(.2,.2);}}
+			@-moz-keyframes altHide{0%{transform:scale(1,1);}100%{transform: scale(.2,.2);}}
+			@-ms-keyframes altHide{0%{transform:scale(1,1);}100%{transform: scale(.2,.2);}}
+			@keyframes altShow{0%{transform: scale(.2,.2);}100%{transform:scale(1,1);}}
+			@-webkit-keyframes altShow{0%{transform: scale(.2,.2);}100%{transform:scale(1,1);}}
+			@-moz-keyframes altShow{0%{transform: scale(.2,.2);}100%{transform:scale(1,1);}}
+			@-ms-keyframes altShow{0%{transform: scale(.2,.2);}100%{transform:scale(1,1);}}
+			.close-btn{
+				position: absolute;
+			    top: -10px;
+			    right: -8px;
+			    background: url(img/close.png) no-repeat;
+			    width: 24px;
+			    height: 24px;
+			    background-size: cover;
+			    cursor: pointer;
+			}
+			.alert-content{
+				
+			}
+			.alert-content > .title{
+				margin-top: -10px;
+			    padding: 5px 0px 12px 0px;
+			    border-bottom: 1px solid #CCCCCC;
+			}
+			.alert-content > .body{
+				margin-top: 17px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<a id="pop">Click</a>
+		<a id="pop2">Click</a>
+	</body>
+	<script>
+
+	
+	window.onload = function(){
+		document.getElementById('pop').onclick = function(){
+			window.popAlert('提示','这是一个默认的提示框');
+		}
+		
+		document.getElementById('pop2').onclick = function(){
+			window.popAlert('提示','这是一个默认的提示框2');
+		}
+	}
+
+	;(function(window, document) {
+			var overlayClass = '.pop-overlay';
+			var alertClass = '.pop-alert';
+			var getAlert  = function(){
+				return document.querySelector(alertClass);			
+			},
+			getOverlay = function(){
+				return document.querySelector(overlayClass)
+			},
+			getOthers = function(className){
+				return document.querySelector(className)
+			}
+			showAlert = function(){
+				getAlert().className = 'pop-alert alert-show';
+				getOverlay().style.display = 'block';
+			},
+			hideAlert = function(){
+				getAlert().className = 'pop-alert alert-hide';
+				getOverlay().style.display = 'none';				
+			},
+			closeAlert = function(){
+				hideAlert();
+			}
+			function initAlert() {
+				var alertHtml = '<div class="pop-overlay"></div><div class="pop-alert"><div class="close-btn"></div><div class="alert-content"><div class="title">提示标题</div><div class="body">提示内容</div></div></div>';
+				alertDom = document.createElement('div'); 
+				alertDom.innerHTML = alertHtml;
+				document.body.appendChild(alertDom);
+			}
+			window.popAlert = function() {
+				var params = {
+					title: '',
+					text: '',
+					type:''
+				}
+				if (arguments[0] === undefined) {
+					window.console.error('最少接受一个参数!');
+					return false;
+				}
+				params.title = arguments[0];
+				params.text = arguments[1] || '';
+				params.type = arguments[2] || '';
+				setAlertParams(params);
+			}
+			function setAlertParams(params) {
+				getOthers('.body').innerHTML = params.text;
+				getOthers('.title').innerHTML = params.title;
+				getOthers('.close-btn').onclick = closeAlert;
+				showAlert();
+			}
+			(function() {
+				initAlert();
+			})();
+		})(window, document)
+	</script>
+
+</html>

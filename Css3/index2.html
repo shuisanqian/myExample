@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,div{
+				margin: 0px;
+				padding: 0px;
+			}
+			.div1,.div2{
+				width: 1200px;
+				margin: 40px auto;
+			}
+			.div1>div{
+				width: 188px;
+				margin: 0px 10px 10px 0px;
+				height: 80px;
+				text-align: center;
+				line-height: 80px;
+				font-size: 12px;
+				float: left;
+				border: 1px solid #CCCCCC;
+				transform: rotateX(10deg);
+			}
+			.div1>div:hover{
+				cursor: pointer;
+				transform-origin: center top;
+				animation: div1Change 1s ease-out 0s;
+				animation-fill-mode: both;
+			}
+			@keyframes div1Change{
+				0%{
+					transform: rotate(20deg);
+				}
+				20%{
+					transform: rotate(-20deg);
+				}
+				50%{
+					transform: rotate(10deg);
+				}
+				80%{
+					transform: rotate(-10deg);
+				}
+				100%{
+					transform: rotate(0deg);
+				}
+			}
+			.div2{
+				position: relative;
+				clear: both;
+			}
+			.anim{
+				width: 200px;
+				position: absolute;
+				top: 0px;
+				transform-origin: center center;
+				transform:rotateY(0deg) scale(1,1);
+				opacity: 1;
+				transition:all 0.35s ease;
+			}
+			.anim>img{
+				width: 200px;
+				height: 200px;
+				border-radius: 100px;
+			}
+			.text{
+				position: absolute;
+				top: 0px;
+				font-size: 12px;
+				line-height: 200px;
+				text-align: center;
+				color: #ffffff;
+				width: 200px;
+				height: 200px;
+				border-radius: 100px;
+				background-color: darkslateblue;
+				transform:rotateY(90deg) scale(0.4,0.4) ;
+				opacity: 0;
+				transition:all 0.35s ease;
+			}
+			.div2:hover .anim{
+				transform:rotateY(90deg) scale(0.4,0.4) ;
+				opacity: 0;
+				transition:all 0.35s ease-in-out;
+			}
+
+			.div2:hover .text{
+				transform:rotateY(0deg) scale(1,1) ;
+				opacity: 1;
+				transition:all 0.35s ease-in-out 0.35s;
+			}
+		</style>
+	</head>
+	<body>
+		
+		
+		<div class="div1">
+			<div>text</div>
+			<div>text</div>
+			<div>text</div>
+			<div>text</div>
+			<div>text</div>
+			<div>text</div>
+			<div>text</div>
+			<div>text</div>
+			<div>text</div>
+			<div>text</div>
+			<div>text</div>
+			<div>text</div>
+		</div>
+		
+		
+		<div class="div2">
+			<div class="anim">
+				<img src="img/2.png" />
+			</div>
+			<div class="text">
+				内容
+			</div>
+		</div>
+		
+		
+		
+	</body>
+</html>

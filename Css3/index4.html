@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>放大镜</title>
+		<style>
+			body,div,img{
+				margin: 0px;
+				padding: 0px;
+			}
+			.minImg{
+				margin:50px 0px 0px 50px;
+				width: 430px;
+				height: 430px;
+				float: left;
+				position: relative;
+				z-index: 1;
+			}
+			.maxImg{
+				width: 430px;
+				height: 430px;
+				float: left;
+				margin:50px 0px 0px 50px;
+				overflow: hidden;
+				position: relative;
+				display: none;
+			}
+			.maxImg img{
+				position: absolute;
+				top: 0px;
+				left:0px
+			}
+			.mouse{
+				display: inline-block;
+				position: absolute;
+				top: 0px;
+				width: 218.405px;
+				height: 218.405px;
+				background-color: #CCCCCC;
+				opacity: 0.5;
+				display: none;
+				z-index: 2;
+				cursor: move;
+			}
+		</style>
+	<script>
+	window.onload = function(){
+		var minDiv = document.getElementById('small'); //小图片的DIV
+		var mouse = document.getElementById('mouse'); //小图的层
+		var bigImg = document.getElementById('big'); //大图
+		var maxDiv = document.getElementById('bImg'); //大图的DIV
+		
+		minDiv.onmouseover = function(){
+			mouse.style.display = 'block';
+			maxDiv.style.display = 'block';
+		}
+		
+		minDiv.onmouseout = function(){
+			mouse.style.display = 'none';
+			maxDiv.style.display = 'none';
+		}
+
+		minDiv.onmousemove = function(ev){
+			console.log(1);
+			var oEvent = ev || event;
+			//鼠标指针在 mouse Dom 的中间
+			var offLeft = oEvent.clientX - minDiv.offsetLeft - mouse.offsetWidth/2;
+			var offTop = oEvent.clientY - minDiv.offsetTop - mouse.offsetHeight/2;			
+			
+			//如果超出左边 和右边
+			if(offLeft < 0){
+				offLeft = 0;
+			}else if(offLeft > minDiv.offsetWidth - mouse.offsetWidth){
+				offLeft = minDiv.offsetWidth - mouse.offsetWidth
+			}
+			
+			//如果超出上边 和下边
+			if(offTop < 0){
+				offTop = 0;
+			}else if(offTop > minDiv.offsetHeight - mouse.offsetHeight){
+				offTop = minDiv.offsetHeight - mouse.offsetHeight
+			}
+			
+			//放大范围位置
+			mouse.style.left = offLeft +"px";
+			mouse.style.top = offTop +"px";
+			
+			
+			var bigX = offLeft/(minDiv.offsetWidth - mouse.offsetWidth);
+			var bigY = offTop/(minDiv.offsetHeight - mouse.offsetHeight);
+			//计算大图显示的位置
+			bigImg.style.left =bigX * (maxDiv.offsetWidth -  bigImg.offsetWidth)+"px";
+			bigImg.style.top =bigY * (maxDiv.offsetHeight - bigImg.offsetHeight)+"px";		
+		}
+	}	
+	</script>
+	</head>
+	<body>
+		<div id="small" class="minImg">
+			<span id="mouse" class="mouse"></span>
+			<img src="img/min-img.png" />
+		</div>
+		<div id="bImg" class="maxImg">	
+			<img id="big" src="img/max-img.png" />
+		</div>
+	</body>
+
+</html>
