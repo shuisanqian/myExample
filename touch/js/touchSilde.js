@@ -1,7 +1,8 @@
 	var touchSlide = function(opt) {
-		this.ele = opt.ele || '';
+		this.opt = opt || {};
+		this.ele = this.opt.ele || '.no';
 		this.container = document.querySelector(this.ele);
-		this.callbakc = opt.callback || ''; //滑动后的回调函数---暂时没写
+		this.callbakc = this.opt.callback || ''; //滑动后的回调函数---暂时没写
 		this.checkRight = false;
 		this.star = 0; //滑动的起始位置
 		this.init();
@@ -9,7 +10,10 @@
 	touchSlide.prototype = {
 		constructor: touchSlide,
 		init: function() {
-			if(this.container == '') return;
+			if(this.container == null){
+				console.warn('ele: is null');
+				return;
+			}
 			this.addListeners();
 		},
 		addListeners: function() {
