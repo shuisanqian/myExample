@@ -59,7 +59,9 @@
 					if(sLength < 0) { //向左滑动
 						self.checkRight = !self.checkRight;
 						rigthDom.style.transform = 'translate(0px, 0px)';
+						rigthDom.style.webkitTransform = 'translate(0px, 0px)';
 						leftDom.style.transform = 'translate(-' + rightDomWidth + 'px, 0px)';
+						leftDom.style.webkitTransform = 'translate(-' + rightDomWidth + 'px, 0px)';
 					} else if(sLength > 0) { //向右滑动
 						self.checkRight = !self.checkRight;
 					}
@@ -99,7 +101,11 @@
 		sildeAnim: function(dom) {
 			var rigthDom = dom.querySelector('.view-cell-right'),
 				leftDom = dom.querySelector('.view-cell-left');
+			setTimeout(function(){
+				leftDom.style.transform = 'translate(0px, 0px)';
+				leftDom.style.webkitTransform = 'translate(0px, 0px)';
+			},50);
 			rigthDom.style.transform = 'translateX(100%)';
-			leftDom.style.transform = 'translate(0px, 0px)';
+			rigthDom.style.webkitTransform = 'translateX(100%)';
 		}
 	}
