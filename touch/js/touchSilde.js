@@ -32,7 +32,7 @@
 								self.sildeAnim(active[0]);
 							}
 						}
-						e.preventDefault();
+						e.stopPropagation();
 					});
 					//添加滑动事件
 					item[num].addEventListener('touchmove', self.touchMove(item[num], self));
