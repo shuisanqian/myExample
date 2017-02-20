@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			ul{
+				list-style: none;
+			}
+			.slide {
+				width: 520px;
+				height: 280px;
+				border: 1px solid #FFFFFF;
+				overflow: hidden;
+				position: absolute;
+				top: 100px;
+				left: 300px;
+			}
+			.slide>.pics>li img{
+				width: 520px;
+				height: 280px;
+			}
+			.pics {
+				width: 2600px;
+				height: 280px;
+				position: relative;
+				left: 0;
+			}
+			.pics>li {
+				float: left;
+			}
+			.pics_pre {
+				width: 32px;
+				height: 32px;
+				position: absolute;
+				top: 45%;
+				left: 0;
+				background: url("img/arrow_left.png");
+				cursor: pointer;
+				display: none;
+			}
+			.pics_next {
+				width: 32px;
+				height: 32px;
+				position: absolute;
+				top: 45%;
+				right: 0;
+				background: url("img/arrow_right.png");
+				cursor: pointer;
+				display: none;
+			}
+		</style>
+		<script src="js/Move.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			
+			//浏览器兼容事件机制
+			var eventUtil = {
+				addHandler:function(ele,type,handler){
+					if(ele.addEventListener){
+						ele.addEventListener(type,handler,false);
+					}else if(ele.attachEvent){
+						ele.attachEvent('on'+type,handler)
+					}else{
+						ele['on'+type] = handler;
+					}
+				}
+			}
+			var silde = (function(){
+				function _silde(){
+					this.index = 0;//当前图片索引变量
+					this.pics = document.getElementById('slide');//获取外层的div
+					this.pics_pre = document.getElementsByClassName('pics_pre')[0]; //上一张
+					this.pics_next = document.getElementsByClassName('pics_next')[0];//下一张
+					this.pics_ul = this.pics.getElementsByTagName('ul')[0];//获取ul
+					this.pics_li = this.pics_ul.getElementsByTagName('li');//获取图片li
+					this.init();
+				}
+				_silde.prototype = {
+					//上一张
+					preClick:function(){
+						if(this.index > 0){
+							this.index -= 1;
+						}else{
+							this.index = this.pics_li.length-1;
+						}
+						this.show();
+					},
+					//下一张
+					nextClick:function(){
+						if(this.index < this.pics_li.length-1){
+							this.index += 1;
+						}else{
+							this.index = 0;
+						}
+						this.show();
+					},
+					show:function(){
+						var left = this.pics_li[this.index].offsetLeft; //获得需要偏移的量
+						move(this.pics_ul,{left:-left});//借用了妙味运动框架					
+					},
+					showTab:function(){
+						this.pics_pre.style.display = 'block';
+						this.pics_next.style.display = 'block';
+					},
+					hideTab:function(){
+						this.pics_pre.style.display = 'none';
+						this.pics_next.style.display = 'none';
+					},
+					init:function(){
+						var that = this;
+						eventUtil.addHandler(this.pics,'mouseover',function(){that.showTab()});
+						eventUtil.addHandler(this.pics,'mouseout',function(){that.hideTab()});
+						eventUtil.addHandler(this.pics_next,'click',function(){that.nextClick()})
+						eventUtil.addHandler(this.pics_pre,'click',function(){that.preClick()})
+					}
+				}				
+				return _silde;
+			})()
+			
+			window.onload = function(){
+				new silde();
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<div class="slide" id="slide">
+			<ul class="pics">
+				<li>
+					<a href="javascript:;"><img src="img/1.png" alt="" /></a>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="img/2.png" alt="" /></a>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="img/3.png" alt="" /></a>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="img/4.png" alt="" /></a>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="img/5.png" alt="" /></a>
+				</li>
+				<li>
+					<a href="javascript:;"><img src="img/6.png" alt="" /></a>
+				</li>
+			</ul>
+  			<span class="pics_pre"></span><span class="pics_next"></span>
+		</div>
+
+	</body>
+
+</html>
